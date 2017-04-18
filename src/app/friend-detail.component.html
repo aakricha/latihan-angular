@@ -1,0 +1,19 @@
+<div class="form-horizontal">
+    <div class="form-group">
+        <label for="" class="control-label col-md-2">User ID</label>
+        <div class="col-md-1">
+            <input type="text" class="form-control" id="userid" name="userid" [(ngModel)]="userid" [disabled]="true">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="" class="control-label col-md-2">Name</label>
+        <div class="col-md-4">
+            <input type="text" class="form-control" id="name" name="name" [(ngModel)]="name" (ngModelChange)="nameChanged($event)" [disabled]="state === 1">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-4">
+            <button class="btn btn-primary" (click)="save()" *ngIf="state != 1"><i class="glyphicon glyphicon-save"></i>Save</button>
+        </div>
+    </div>
+</div>

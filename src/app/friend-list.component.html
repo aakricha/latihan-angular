@@ -1,0 +1,20 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th>User ID</th>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let f of friends">
+            <td>
+                <a href="javascript:" (click)="view(f)"><i class="glyphicon glyphicon-search"></i></a>&nbsp;
+                <a href="javascript:" style="color:green;margin-left:5px;" (click)="edit(f)"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
+                <a href="javascript:" style="color:red;margin-left:5px;" (click)="delete(f)"><i class="glyphicon glyphicon-remove"></i></a>
+            </td>
+            <td>{{f.userid}}</td>
+            <td>{{f.name}}</td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,59 @@
+<div class="form-horizontal">
+    <div class="form-group">
+        <label for="criteria" class="control-label col-md-1">Criteria</label>
+        <div class="col-md-2">
+            <select name="selectcriteria" id="selectcriteria" class="form-control" [(ngModel)]="criteria">
+                <option *ngFor="let crt of listCriteria" [value]="crt.value">{{crt.text}}</option>
+            </select>
+        </div>
+        <div class="col-md-3">
+            <input type="text" name="value" id="value" [(ngModel)]="value" class="form-control" style="text-align:center">
+        </div>
+        <div class="col-md-3">
+            <button class="btn btn-primary" type="button" (click)="search()"><i class="glyphicon glyphicon-search"></i> Search</button>
+        </div>
+    </div>
+    <ul>
+        <li *ngFor="let cr of this.option.criteria">{{cr.criteria}} of {{cr.value}} <a href="javascript:;" (click)="remove(crt)" style="color:red">Remove</a></li>
+    </ul>
+</div>
+<div style="overflow-x: scroll">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Action</th>
+                <th *ngFor="let c of columns" (click)="sortData(c.field)">c.text</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let r of data.rows">
+                <td></td>
+                <td *ngFor="let c of columns">{{r[c.field]}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="col-md-12" style="margin-top: 10px">
+    <div class="col-md-6">
+        <strong>Total Rows: {{total}}</strong>
+    </div>
+    <div class="col-md-6" style="text-align:right">
+        <strong>Page Size</strong>
+        <select name="pageSize" id="pageSize" (change)="changePageSize()" [(ngModel)]="option.pageSize" style="border-radius:3px;text-align:center;border:solid 1px #ccc; padding: 4px;width:60px;margin-right:10px;">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+        </select>
+        <strong>Page </strong>
+        <input type="text" id="pageindex" name="pageindex" (keyup)="inputChange()" [(ngModel)]="option.page" style="border-radius:3px;text-align:center;border:solid 1px #ccc; padding: 4px;width:50px;">
+        <strong style="margin-right:10px;"> / {{pageCount}}</strong>
+        <button class="btn btn-primary btn-sm" type="button" (click)="prev()">
+            <i class="glyphicon glyphicon-chevron-left"></i> Prev
+        </button>
+        <button class="btn btn-primary btn-sm" type="button" (click)="next()">
+            <i class="glyphicon glyphicon-chevron-right"></i> Next
+        </button>
+    </div>
+</div>

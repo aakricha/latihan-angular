@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="row">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                {{title}}
+            </div>
+            <div class="panel-body">
+                <friend-detail [userid]="userid" [(name)]="name" [state]="state" [save]="saveCallback"></friend-detail>
+                <div class="col-md-6">
+                    <friend-list [friends]="friends" [view]="viewCallback" [edit]="editCallback" [delete]="deleteCallback"></friend-list>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <button class="btn btn-primary" type="button" (click)="add()">Add</button>
+            </div>
+        </div>
+    </div>
+</div>

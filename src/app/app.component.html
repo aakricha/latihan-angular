@@ -1,0 +1,5 @@
+<user-detail [user]="user" [state]="state"></user-detail>
+<button type="button" (click)="save()" *ngIf="state != 1">Simpan</button>
+<br>
+<user-list [listUser]="listUser" [view]="viewCallback" [edit]="editCallback" [delete]="deleteCallback"></user-list>
+<button type="button" (click)="add()">Tambah</button>

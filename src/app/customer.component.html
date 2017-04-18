@@ -1,0 +1,92 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Customer List
+                </div>
+                <div class="panel-body">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label for="criteria" class="control-label col-md-1">Criteria</label>
+                            <div class="col-md-2">
+                                <select name="selectcriteria" id="selectcriteria" class="form-control" [(ngModel)]="criteria">
+                                    <option *ngFor="let crt of listCriteria" [value]="crt.value">{{crt.text}}</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <input type="text" name="value" id="value" [(ngModel)]="value" class="form-control" style="text-align:center">
+                            </div>
+                            <div class="col-md-3">
+                                <button class="btn btn-primary" type="button" (click)="search()"><i class="glyphicon glyphicon-search"></i> Search</button>
+                            </div>
+                        </div>
+                        <ul>
+                            <li *ngFor="let cr of this.option.criteria">{{cr.criteria}} of {{cr.value}} <a href="javascript:;" (click)="remove(crt)" style="color:red">Remove</a></li>
+                        </ul>
+                    </div>
+                    <div style="overflow-x: scroll">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th (click)="sortData('CustomerID')"><i class="fa fa-sort-amount-desc" aria-hidden="true"></i>Customer ID</th>
+                                    <th (click)="sortData('CompanyName')"><i class="fa fa-sort-amount-desc" aria-hidden="true"></i>Company Name</th>
+                                    <th (click)="sortData('ContactName')"><i class="fa fa-sort-amount-desc" aria-hidden="true"></i>Contact Name</th>
+                                    <th (click)="sortData('ContactTitle')"><i class="fa fa-sort-amount-desc" aria-hidden="true"></i>Title</th>
+                                    <th (click)="sortData('Address')"><i class="fa fa-sort-amount-desc" aria-hidden="true"></i>Address</th>
+                                    <th (click)="sortData('City')"><i class="fa fa-sort-amount-desc" aria-hidden="true"></i>City</th>
+                                    <th (click)="sortData('Country')"><i class="fa fa-sort-amount-desc" aria-hidden="true"></i>Country</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let c of customers">
+                                    <td>
+                                        <a href="javascript:" (click)="view(c)"><i class="glyphicon glyphicon-search"></i></a>&nbsp;
+                                        <a href="javascript:" style="color:green;margin-left:5px;" (click)="edit(c)"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
+                                        <a href="javascript:" style="color:red;margin-left:5px;" (click)="delete(c)"><i class="glyphicon glyphicon-remove"></i></a>
+                                    </td>
+                                    <td>{{c.CustomerID}}</td>
+                                    <td>{{c.CompanyName}}</td>
+                                    <td>{{c.ContactName}}</td>
+                                    <td>{{c.ContactTitle}}</td>
+                                    <td>{{c.Address}}</td>
+                                    <td>{{c.City}}</td>
+                                    <td>{{c.Country}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-12" style="margin-top: 10px">
+                        <div class="col-md-6">
+                            <strong>Total Rows: {{total}}</strong>
+                        </div>
+                        <div class="col-md-6" style="text-align:right">
+                            <strong>Page Size</strong>
+                            <select name="pageSize" id="pageSize" (change)="changePageSize()" [(ngModel)]="option.pageSize" style="border-radius:3px;text-align:center;border:solid 1px #ccc; padding: 4px;width:60px;margin-right:10px;">
+                                <option value="5">5</option>
+                                <option value="10">10</option>
+                                <option value="25">25</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                            </select>
+                            <strong>Page </strong>
+                            <input type="text" id="pageindex" name="pageindex" (keyup)="inputChange()" [(ngModel)]="option.page" style="border-radius:3px;text-align:center;border:solid 1px #ccc; padding: 4px;width:50px;">
+                            <strong style="margin-right:10px;"> / {{pageCount}}</strong>
+                            <button class="btn btn-primary btn-sm" type="button" (click)="prev()">
+                                <i class="glyphicon glyphicon-chevron-left"></i> Prev
+                            </button>
+                            <button class="btn btn-primary btn-sm" type="button" (click)="next()">
+                                <i class="glyphicon glyphicon-chevron-right"></i> Next
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <button class="btn btn-primary" (click)="addNew()"><i class="glyphicon glyphicon-plus"></i>Add</button>
+                </div>
+            </div>
+        </div>
+        <customer-detail [id]="'modal-detail'" [customer]="customer" [state]="state" [displayData]="displayDataCallback"></customer-detail>
+    </div>
+</div>

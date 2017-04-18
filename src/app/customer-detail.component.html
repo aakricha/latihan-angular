@@ -1,0 +1,84 @@
+<div class="modal fade" id="{{id}}">
+    <div class="modal-dialog modal-lg">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                Customer Detail
+                <span class="close" data-dismiss="modal">&times;</span>
+            </div>
+            <div class="panel-body">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="" class="control-label col-md-3">Customer ID</label>
+                        <div class="col-md-3">
+                            <input type="text" id="customerID" name="customerID" class="form-control" [(ngModel)]="customer.CustomerID" [disabled]="state === 1">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="control-label col-md-3">Company Name</label>
+                        <div class="col-md-8">
+                            <input type="text" id="companyName" name="companyName" class="form-control" [(ngModel)]="customer.CompanyName" [disabled]="state === 1">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="control-label col-md-3">Contact Name</label>
+                        <div class="col-md-8">
+                            <input type="text" id="contactName" name="contactName" class="form-control" [(ngModel)]="customer.ContactName" [disabled]="state === 1">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="control-label col-md-3">Contact Title</label>
+                        <div class="col-md-8">
+                            <input type="text" id="contactTitle" name="contactTitle" class="form-control" [(ngModel)]="customer.ContactTitle" [disabled]="state === 1">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="control-label col-md-3">Address</label>
+                        <div class="col-md-8">
+                            <input type="text" id="address" name="address" class="form-control" [(ngModel)]="customer.Address" [disabled]="state === 1">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="control-label col-md-3">City</label>
+                        <div class="col-md-8">
+                            <input type="text" id="city" name="city" class="form-control" [(ngModel)]="customer.City" [disabled]="state === 1">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="control-label col-md-3">Region</label>
+                        <div class="col-md-3">
+                            <input type="text" id="region" name="region" class="form-control" [(ngModel)]="customer.Region" [disabled]="state === 1">
+                        </div>
+                        <label for="" class="control-label col-md-2">Postal Code</label>
+                        <div class="col-md-3">
+                            <input type="text" id="postalCode" name="postalCode" class="form-control" [(ngModel)]="customer.PostalCode" [disabled]="state === 1">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="control-label col-md-3">Phone</label>
+                        <div class="col-md-3">
+                            <input type="text" id="phone" name="phone" class="form-control" [(ngModel)]="customer.Phone" [disabled]="state === 1">
+                        </div>
+                        <label for="" class="control-label col-md-2">Fax</label>
+                        <div class="col-md-3">
+                            <input type="text" id="fax" name="fax" class="form-control" [(ngModel)]="customer.Fax" [disabled]="state === 1">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="control-label col-md-3">Country</label>
+                        <div class="col-md-8">
+                            <input type="text" id="country" name="country" class="form-control" [(ngModel)]="customer.Country" [disabled]="state === 1">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer" style="text-align:right">
+                <button class="btn btn-primary" (click)="save()" *ngIf="state != 1">
+                    <i class="glyphicon glyphicon-save"> Save</i>
+                </button>
+                <button class="btn btn-default" data-dismiss="modal">
+                    <i class="glyphicon glyphicon-remove"> Close</i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
